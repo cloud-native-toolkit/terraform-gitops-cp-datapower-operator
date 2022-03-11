@@ -41,4 +41,12 @@ versions:
         moduleRef:
           id: gitops
           output: sealed_secrets_cert
+      - name: catalog
+        moduleRef:
+          id: catalogs
+          output: catalog_ibmoperators
+      - name: entitlement_key
+        moduleRef:
+          id: catalogs
+          output: entitlement_key
 softwareProvider: ibm-cp

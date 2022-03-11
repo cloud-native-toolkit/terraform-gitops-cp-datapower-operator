@@ -1,0 +1,10 @@
+namespace: openshift-operators
+subscriptions:
+  ibmdatapower:
+    name: datapower-operator
+    subscription:
+      channel: v1.5
+      installPlanApproval: Automatic
+      name: datapower-operator
+      source: ibm-operator-catalog
+      sourceNamespace: openshift-marketplace

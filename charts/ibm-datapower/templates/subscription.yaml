@@ -1,0 +1,8 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: {{ .Values.subscriptions.ibmdatapower.name }}
+  namespace: {{ .Values.namespace }}
+  annotations:
+spec:
+  {{- toYaml .Values.subscriptions.ibmdatapower.subscription | nindent 2 }}
