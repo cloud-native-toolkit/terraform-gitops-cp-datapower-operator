@@ -37,6 +37,8 @@ echo "Printing payload/2-services/namespace/${NAMESPACE}/${COMPONENT_NAME}/value
 cat "payload/2-services/namespace/${NAMESPACE}/${COMPONENT_NAME}/values.yaml"
 
 
+echo "Checking for namespace - ${NAMESPACE}"
+
 count=0
 until kubectl get namespace "${NAMESPACE}" 1> /dev/null 2> /dev/null || [[ $count -eq 20 ]]; do
   echo "Waiting for namespace: ${NAMESPACE}"
@@ -52,6 +54,8 @@ else
   sleep 30
 fi
 
+echo "Checking if subscription for ${SUBSCRIPTION} is created in ${NAMESPACE} namespace"
+
 SUBSCRIPTION="subscription/datapower-operator"
 count=0
 until kubectl get ${SUBSCRIPTION} -n "${NAMESPACE}"  || [[ $count -eq 20 ]]; do
@@ -66,9 +70,12 @@ if [[ $count -eq 20 ]]; then
   exit 1
 fi
 
+
 CSV="datapower-operator"
+echo "Checking if ClusterServiceVersion - ${CSV} exists"
+
 count=0
-until [[ $(kubectl get csv -n "${NAMESPACE}" -l operators.coreos.com/${CSV}.${NAMESPACE}="" -o=jsonpath='{range .items[]}{.metadata.name}{"\n"}{end}' | wc -l) -gt 0 ]] || [[ $count -eq 20 ]]; do
+until [[ $(kubectl get csv -n "${NAMESPACE}" -l operators.coreos.com/${CSV}.${NAMESPACE}="" | wc -l) -gt 0 ]] || [[ $count -eq 20 ]]; do
   echo "Waiting for csv ${CSV} in ${NAMESPACE}"
   count=$((count + 1))
   sleep 15
