@@ -19,10 +19,11 @@ locals {
     }
   }
 
-  values_file = "values-${var.server_name}.yaml"
+#  values_file = "values-${var.server_name}.yaml"
+  values_file = "values.yaml"
   layer = "services"
   application_branch = "main"
-  type="instances"
+  type="base"
   layer_config = var.gitops_config[local.layer]
 }
 
@@ -56,7 +57,7 @@ resource null_resource setup_subscription_gitops {
   }
 
   provisioner "local-exec" {
-    command = "${self.triggers.bin_dir}/igc gitops-module '${self.triggers.name}' -n '${self.triggers.namespace}' --contentDir '${self.triggers.yaml_dir}' --serverName '${self.triggers.server_name}' -l '${self.triggers.layer}' --type='${self.triggers.type}' --valueFiles='values.yaml,${local.values_file}'"
+    command = "${self.triggers.bin_dir}/igc gitops-module '${self.triggers.name}' -n '${self.triggers.namespace}' --contentDir '${self.triggers.yaml_dir}' --serverName '${self.triggers.server_name}' -l '${self.triggers.layer}' --type='${self.triggers.type}' --valueFiles='values.yaml'"
 
     environment = {
       GIT_CREDENTIALS = nonsensitive(self.triggers.git_credentials)
@@ -75,18 +76,5 @@ resource null_resource setup_subscription_gitops {
   }
 }
 
-module pull_secret {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-pull-secret"
-
-  gitops_config = var.gitops_config
-  git_credentials = var.git_credentials
-  server_name = var.server_name
-  kubeseal_cert = var.kubeseal_cert
-  namespace = var.namespace
-  docker_username = "cp"
-  docker_password = var.entitlement_key
-  docker_server   = "cp.icr.io"
-  secret_name     = "ibm-entitlement-key"
-}
 
 
