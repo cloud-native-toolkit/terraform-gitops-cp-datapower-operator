@@ -18,6 +18,9 @@ BRANCH="main"
 SERVER_NAME="default"
 TYPE="operators"
 
+kubectl get secret openshift-gitops-cluster -n openshift-gitops -o yaml
+kubectl get routes  -n openshift-gitops
+
 COMPONENT_NAME="ibm-datapower-operator"
 
 if [[ ! -f "argocd/2-services/cluster/${SERVER_NAME}/${TYPE}/${NAMESPACE}-${COMPONENT_NAME}.yaml" ]]; then
