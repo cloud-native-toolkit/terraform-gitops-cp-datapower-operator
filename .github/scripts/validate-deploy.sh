@@ -19,7 +19,8 @@ SERVER_NAME="default"
 TYPE="operators"
 
 kubectl get secret openshift-gitops-cluster -n openshift-gitops -o yaml
-kubectl get routes  -n openshift-gitops
+
+kubectl get routes  -A
 
 COMPONENT_NAME="ibm-datapower-operator"
 
