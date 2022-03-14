@@ -32,6 +32,7 @@ variable "cluster_name" {
 variable "cluster_type" {
   type        = string
   description = "The type of cluster that should be created (openshift or kubernetes)"
+  default   = "openshift"
 }
 
 variable "cluster_exists" {
@@ -99,3 +100,4 @@ variable "subscription_namespace" {
   description = "The namespace where the application should be deployed"
   default     = "openshift-operators"
 }
+
