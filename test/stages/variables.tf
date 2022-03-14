@@ -75,3 +75,27 @@ variable "kubeseal_namespace" {
 
 variable "cp_entitlement_key" {
 }
+
+variable "channel" {
+  type        = string
+  description = "Channel number for subscription"
+  default     = "v1.5"
+}
+
+variable "catalog" {
+  type        = string
+  description = "The catalog source that should be used to deploy the operator"
+  default     = "ibm-operator-catalog"
+}
+
+variable "catalog_namespace" {
+  type        = string
+  description = "The namespace where the catalog has been deployed"
+  default     = "openshift-marketplace"
+}
+
+variable "subscription_namespace" {
+  type        = string
+  description = "The namespace where the application should be deployed"
+  default     = "openshift-operators"
+}
