@@ -6,6 +6,10 @@ description: >-
 tags:
   - tools
   - gitops
+  - ibm
+  - cloud pak
+  - operator
+  - datapower
 versions:
   - platforms:
       - kubernetes
@@ -16,10 +20,18 @@ versions:
         refs:
           - source: github.com/cloud-native-toolkit/terraform-tools-gitops.git
             version: '>= 1.1.0'
+      - id: catalogs
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-gitops-cp-catalogs.git
+            version: ">= 1.0.0"
       - id: namespace
         refs:
           - source: github.com/cloud-native-toolkit/terraform-gitops-namespace.git
             version: '>= 1.0.0'
+      - id: dep-manager
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-cp4i-dependency-management.git
+            version: ">= 1.0.0"
     variables:
       - name: gitops_config
         moduleRef:
@@ -49,4 +61,8 @@ versions:
         moduleRef:
           id: catalogs
           output: entitlement_key
+      - name: channel
+        moduleRef:
+          id: dep-manager
+          output: datapower.channel
 softwareProvider: ibm-cp
