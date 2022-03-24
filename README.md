@@ -37,5 +37,8 @@ module "datapower-operator" {
    catalog = module.cp_catalogs.catalog_ibmoperators
    kubeseal_cert = module.gitops.sealed_secrets_cert
    entitlement_key = module.cp_catalogs.entitlement_key
+
+   # Pulling variables from CP4I dependency management
+   channel  = module.cp4i-dependencies.datapower.channel  
 }
 ```
