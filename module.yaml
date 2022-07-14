@@ -44,18 +44,18 @@ versions:
         moduleRef:
           id: namespace
           output: name
-      - name: kubeseal_cert
-        moduleRef:
-          id: gitops
-          output: sealed_secrets_cert
+      # - name: kubeseal_cert
+      #   moduleRef:
+      #     id: gitops
+      #     output: sealed_secrets_cert
       - name: catalog
         moduleRef:
           id: catalogs
           output: catalog_ibmoperators
-      - name: entitlement_key
-        moduleRef:
-          id: catalogs
-          output: entitlement_key
+      # - name: entitlement_key
+      #   moduleRef:
+      #     id: catalogs
+      #     output: entitlement_key
       - name: channel
         moduleRef:
           id: dep-manager
