@@ -60,30 +60,19 @@ variable "git_credentials" {
     token = string
   }))
   description = "The credentials for the gitops repo(s)"
-  sensitive   = true
+  sensitive = true
 }
 
 variable "namespace" {
   type        = string
   description = "The namespace where the application should be deployed"
-}
-
-variable "kubeseal_cert" {
-  type        = string
-  description = "The certificate/public key used to encrypt the sealed secrets"
-  default     = ""
+  default     = "openshift-operators"
 }
 
 variable "server_name" {
   type        = string
   description = "The name of the server"
   default     = "default"
-}
-
-variable "channel" {
-  type        = string
-  description = "Channel number for subscription"
-  default     = "v1.5"
 }
 
 variable "catalog" {
@@ -98,14 +87,8 @@ variable "catalog_namespace" {
   default     = "openshift-marketplace"
 }
 
-variable "subscription_namespace" {
+variable "channel" {
   type        = string
-  description = "The namespace where the application should be deployed"
-  default     = "openshift-operators"
-}
-
-variable "entitlement_key" {
-  type        = string
-  description = "The entitlement key required to access Cloud Pak images"
-  sensitive   = true
+  description = "The channel that should be used to deploy the operator"
+  default     = "v1.7"
 }
