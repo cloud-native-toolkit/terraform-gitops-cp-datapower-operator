@@ -12,16 +12,13 @@ tags:
   - datapower
 versions:
   - platforms:
+      - kubernetes
       - ocp4
     dependencies:
       - id: gitops
         refs:
           - source: github.com/cloud-native-toolkit/terraform-tools-gitops.git
             version: '>= 1.1.0'
-      - id: catalogs
-        refs:
-          - source: github.com/cloud-native-toolkit/terraform-gitops-cp-catalogs.git
-            version: ">= 1.0.0"
       - id: namespace
         refs:
           - source: github.com/cloud-native-toolkit/terraform-gitops-namespace.git
@@ -29,7 +26,7 @@ versions:
       - id: dep-manager
         refs:
           - source: github.com/cloud-native-toolkit/terraform-cp4i-dependency-management.git
-            version: ">= 1.0.0"
+            version: ">= 0.0.0"
     variables:
       - name: gitops_config
         moduleRef:
