@@ -10,7 +10,7 @@ The module depends on the following software components:
 
 - terraform - v15
 - kubectl
-
+ 
 ### Terraform providers
 
 - IBM Cloud provider >= 1.5.3
