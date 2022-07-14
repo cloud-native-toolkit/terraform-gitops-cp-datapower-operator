@@ -10,12 +10,12 @@ The module depends on the following software components:
 
 - terraform - v15
 - kubectl
-
+ 
 ### Terraform providers
 
 - IBM Cloud provider >= 1.5.3
 - Helm provider >= 1.1.1 (provided by Terraform)
-
+ 
 ## Module dependencies
 
 This module makes use of the output from other modules:
