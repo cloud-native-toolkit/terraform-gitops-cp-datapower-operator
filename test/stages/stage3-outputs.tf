@@ -12,9 +12,3 @@ resource local_file write_outputs {
     type        = module.gitops_module.type
   })
 }
-
-resource local_file write_bin_dir {
-  filename = ".bin_dir"
-
-  content = module.gitops_module.bin_dir
-}
