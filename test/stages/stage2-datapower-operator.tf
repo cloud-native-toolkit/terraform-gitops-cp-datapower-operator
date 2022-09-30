@@ -6,6 +6,4 @@ module "gitops_module" {
   
   # Pulling variables from CP4I dependency management
   channel  = module.cp4i-dependencies.datapower.channel
-
-
 }
